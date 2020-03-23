@@ -1,0 +1,1 @@
+sudo echo "sudo  nvpmodel  -m  0 && sudo jetson_clocks" > /etc/rc.local

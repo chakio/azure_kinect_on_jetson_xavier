@@ -1,0 +1,1 @@
+docker build --tag chakio:azurekinect_arm  .
