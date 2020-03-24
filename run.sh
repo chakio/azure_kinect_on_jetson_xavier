@@ -1,4 +1,3 @@
-sudo  nvpmodel  -m  0 && sudo jetson_clocks
 xhost +
 docker run -it \
 --privileged \
