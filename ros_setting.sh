@@ -5,7 +5,8 @@ source /home/catkin_ws/devel/setup.bash
 #network_if=enp60s0
 #network_if=eno01
 #network_if=enp4s0
-network_if=eth1 
+#network_if=eth1 
+network_if=eth0 
 CATKIN_HOME=/home/catkin_ws
 
 ## export

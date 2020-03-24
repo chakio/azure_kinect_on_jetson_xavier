@@ -1,3 +1,4 @@
+sudo  nvpmodel  -m  0 && sudo jetson_clocks
 xhost +
 docker run -it \
 --privileged \
@@ -9,7 +10,6 @@ docker run -it \
 --env="LIBGL_ALWAYS_SOFTWARE=1" \
 --rm \
 -v "/$(pwd)/ros_setting.sh:/ros_setting.sh" \
--v "/$(pwd)/ros_workspace/:/home/catkin_ws/" \
 -v /etc/group:/etc/group:ro \
 -v /etc/passwd:/etc/passwd:ro \
 --net host \

@@ -67,7 +67,7 @@ RUN apt-get update && apt-get install -y \
     doxygen \
     clang \
     gcc-multilib-arm-linux-gnueabihf \
-    g++-multilib-arm-linux-gnueabihf \
+    g++-multilib-arm-linux-gnueabihf && \
    rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y \
@@ -133,15 +133,15 @@ RUN apt-get update && apt-get install -y \
 ##                 install azure kinect ros driver                   ##
 #######################################################################
    #init catkin_ws
-RUN mkdir -p /catkin_ws/src && \
-   cd /catkin_ws/src && \
+RUN mkdir -p /home/catkin_ws/src && \
+   cd /home/catkin_ws/src && \
    /bin/bash -c 'source /opt/ros/melodic/setup.bash;catkin_init_workspace' && \
-   cd /catkin_ws && \
+   cd /home/catkin_ws && \
    /bin/bash -c 'source /opt/ros/melodic/setup.bash;catkin_make' && \
-   cd /catkin_ws/src && \
+   cd /home/catkin_ws/src && \
    git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver.git
 
-RUN cd /catkin_ws && \
+RUN cd /home/catkin_ws && \
    /bin/bash -c 'source /opt/ros/melodic/setup.bash;catkin_make'
 
 #######################################################################
