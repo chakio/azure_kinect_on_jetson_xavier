@@ -118,7 +118,8 @@ RUN chmod a+rwx -R /lib/aarch64-linux-gnu/
 WORKDIR /home
 
 RUN git clone https://github.com/microsoft/Azure-Kinect-Sensor-SDK.git
-COPY ./lib/libdepthengine.so.2.0 /home/Azure-Kinect-Sensor-SDK/build/bin/libdepthengine.so.2.0
+RUN mkdir -p /home/Azure-Kinect-Sensor-SDK/build/bin/
+RUN cp /microsoft.azure.kinect.sensor.1.4.0/linux/lib/native/arm64/release/libdepthengine.so.2.0 /home/Azure-Kinect-Sensor-SDK/build/bin/libdepthengine.so.2.0
 RUN chmod a+rwx -R /home/Azure-Kinect-Sensor-SDK/build/bin/
 
 RUN cd /home/Azure-Kinect-Sensor-SDK &&\
