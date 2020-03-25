@@ -2,13 +2,14 @@
 Jetson AGX Xavier等のARMアーキテクチャのPCにてAzure KinectをROS上で使用するためのセットアップ
 
 ## Requirement
-* Jetson Tx2, Nano, Xaier, etc ...
+* Jetson Tx2, Nano, Xavier, etc ...
 * Azure Kinect
 
 ## Setup
 * 参考サイト
     * https://proc-cpuinfo.fixstars.com/2019/06/nvidia-sdk-manager-on-docker/
     * https://qiita.com/Shunmo17/items/3bfd45ecb5c460bc4bc9
+* 各設定方法はスクリプト化されており、scriptsフォルダに配置されています
 * JetsonへのjetPackのインストール
     * Host PCを汚さないためのdockerfileを作ってくださった方がいらっしゃいます。
         * https://github.com/atinfinity/sdk_manager_docker
