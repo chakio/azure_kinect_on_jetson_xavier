@@ -88,7 +88,8 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 # update cmake
-COPY ./lib/cmake-3.16.5 /cmake-3.16.5
+RUN wget https://cmake.org/files/v3.16/cmake-3.16.5.tar.gz  -O cmake-3.16.5.tar.gz
+RUN tar -zxvf cmake-3.16.5.tar.gz 
 WORKDIR /cmake-3.16.5
 
 RUN ./bootstrap
@@ -100,8 +101,17 @@ RUN apt-get update && apt-get install -y \
 	perl
 
 # install azure kinect sdk
-COPY ./lib/libdepthengine.so.2.0 /lib/aarch64-linux-gnu/
-COPY ./lib/libdepthengine.so.2.0 /usr/lib/aarch64-linux-gnu/
+WORKDIR /
+RUN apt-get update && apt-get install -y \
+    zip \
+    unzip && \
+   rm -rf /var/lib/apt/lists/*
+RUN wget https://www.nuget.org/api/v2/package/Microsoft.Azure.Kinect.Sensor/1.4.0 -O microsoft.azure.kinect.sensor.1.4.0.nupkg 
+RUN mv microsoft.azure.kinect.sensor.1.4.0.nupkg  microsoft.azure.kinect.sensor.1.4.0.zip
+RUN unzip -d microsoft.azure.kinect.sensor.1.4.0 microsoft.azure.kinect.sensor.1.4.0.zip
+
+RUN cp /microsoft.azure.kinect.sensor.1.4.0/linux/lib/native/arm64/release/libdepthengine.so.2.0 /lib/aarch64-linux-gnu/
+RUN cp /microsoft.azure.kinect.sensor.1.4.0/linux/lib/native/arm64/release/libdepthengine.so.2.0 /usr/lib/aarch64-linux-gnu/
 RUN chmod a+rwx /usr/lib/aarch64-linux-gnu
 RUN chmod a+rwx -R /lib/aarch64-linux-gnu/
 
